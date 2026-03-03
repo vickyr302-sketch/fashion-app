@@ -3,5 +3,4 @@ gunicorn
 opencv-python
 numpy
 scikit-learn
-tensorflow
 mysql-connector-python
