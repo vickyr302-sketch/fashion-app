@@ -8,9 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from sklearn.cluster import KMeans
 from flask import session, redirect, url_for, flash
-from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.models import Model
+
 import mysql.connector as mysql
 
 # ---------------- FLASK APP ----------------
@@ -26,9 +24,6 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 5 * 1024 * 1024  # 5MB
 
 # ---------------- CNN MODEL ----------------
-base_model = MobileNetV2(weights="imagenet", include_top=False, pooling="avg")
-cnn_model = Model(inputs=base_model.input, outputs=base_model.output)
-
 # ---------------- FUNCTIONS ----------------
 def extract_features(img_path):
     img = image.load_img(img_path, target_size=(224, 224))
